@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h0!eqw_25kku0nq@(c$jg3a^6f8sm$y)-b39xxotfy*64ljdov'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -157,9 +160,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Braintree settings
-BRAINTREE_MERCHANT_ID = 'k6jt4kp9fnsdq25g'  # Merchant ID
-BRAINTREE_PUBLIC_KEY = '7w65b63g9k6hmdts'   # Public Key
-BRAINTREE_PRIVATE_KEY = '11401537c5166ae91bb2b63c8c1be35c'  # Private key
+BRAINTREE_MERCHANT_ID = os.getenv('BRAINTREE_MERCHANT_ID')
+BRAINTREE_PUBLIC_KEY = os.getenv('BRAINTREE_PUBLIC_KEY')
+BRAINTREE_PRIVATE_KEY = os.getenv('BRAINTREE_PRIVATE_KEY')
 
 import braintree
 
